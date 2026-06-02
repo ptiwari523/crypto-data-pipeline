@@ -15,7 +15,7 @@ if silver_df.count() == 0:
 gold_df = silver_df\
     .select("id",
             "name",
-            "symbol" 
+            "symbol", 
             "current_price", 
             "market_cap",
             "market_cap_rank",
