@@ -12,34 +12,25 @@ The workflow runs on a scheduled basis, continuously collecting data from CoinGe
 
 ## Architecture
 
-```text
-CoinGecko API
-       │
-       ▼
-01_ingestion
-       │
-       ▼
-crypto_bronze
-(Raw Historical Data)
-       │
-       ▼
-02_silver
-(Window Function Deduplication)
-       │
-       ▼
-crypto_silver
-(Latest Unique Cryptocurrencies)
-       │
-       ▼
-03_gold
-(Business Logic)
-       │
-       ▼
-crypto_gold
-(Top 50 Cryptocurrencies by Market Cap)
-```
+## Architecture
 
----
+```mermaid
+flowchart TD
+
+    A[CoinGecko API]
+    
+    A --> B[01_ingestion]
+
+    B --> C[crypto_bronze<br/>Raw Historical Data]
+
+    C --> D[02_silver<br/>Window Function Deduplication]
+
+    D --> E[crypto_silver<br/>Latest Unique Cryptocurrencies]
+
+    E --> F[03_gold<br/>Business Logic]
+
+    F --> G[crypto_gold<br/>Top 50 Cryptocurrencies by Market Cap]
+```
 
 ## Technology Stack
 
