@@ -13,15 +13,15 @@ silver_df = spark.read.table("crypto_silver")
 if silver_df.count() == 0:
     raise Exception("❌ Silver is empty — stopping Gold")
 gold_df = silver_df\
-    .select("id",
+    .select("market_cap_rank",
             "name",
             "symbol", 
             "current_price", 
             "market_cap",
-            "market_cap_rank",
-            "price_change_percentage_24h"
+            "price_change_percentage_24h",
+            "total_volume"
             )\
-    .orderBy(col("market_cap").desc())\
+    .orderBy(col("market_cap_rank"))\
     .limit(50)    
 
 # COMMAND ----------
@@ -37,3 +37,6 @@ gold_df.write\
   .saveAsTable("crypto_gold")
 
 print("✅ Gold completed successfully")
+
+# COMMAND ----------
+
