@@ -12,8 +12,6 @@ The workflow runs on a scheduled basis, continuously collecting data from CoinGe
 
 ## Architecture
 
-## Architecture
-
 ```mermaid
 flowchart TD
 
